@@ -1,0 +1,179 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% load static %}
+
+    <title>SB Admin 2 - Tables</title>
+
+</head>
+<!-- 수동 스케줄러-->
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- hello -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid"><br/>
+
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-2 text-gray-800">ADD Schedule</h1>
+                    
+
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Schedule List</h6>
+                        </div>
+                        <div class="card-body">
+
+                            <form   >
+
+                                <!--LIST-->
+                                <p style="float:left; margin-right:10px;">NS : </p>
+                                <div class="dropdown mb-4" style="float:left; margin-right:15px;">
+                                    <button class="btn btn-primary dropdown-toggle" type="button"
+                                        id="btn1" data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false" style="width:130px; background-color:lightslategray; border-color:lightslategray">
+                                        Namespace
+                                    </button>
+                                    <div class="dropdown-menu animated--fade-in"
+                                        aria-labelledby="btn1">
+                                        {% for hpadata in hpadatas %}
+                                            <a class="dropdown-item" href="#" onclick='changeBtnName1()'>{{ hpadata.namespace }}</a>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+
+                                <p style="float:left; margin-right:10px;">CTN : </p>
+                                <div class="dropdown mb-4" style="float:left; margin-right:15px;">
+                                    <button class="btn btn-primary dropdown-toggle" type="button"
+                                        id="btn2" data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false" style="width:130px; background-color:lightslategray; border-color:lightslategray">
+                                        Container
+                                    </button>
+                                    
+                                    <div class="dropdown-menu animated--fade-in"
+                                        aria-labelledby="btn2">
+                                        {% for hpadata in hpadatas %}
+                                            <a class="dropdown-item" href="#" onclick='changeBtnName2()'>{{ hpadata.container }}</a>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+
+                                <!-- minmax -->
+                                <p style="float:left;">MAX : </p>
+                                <div class="col-sm-1 mb-3 mb-sm-10" style="float:left;">
+                                    
+                                    <input type="text" class="form-control form-control-user" id="inputmax"
+                                        placeholder="Max" name="inputmax" value="">
+                                </div>
+
+                                <p style="float:left;">MIN : </p>
+                                <div class="col-sm-1 mb-3 mb-sm-10" style="float:left;">
+                                    
+                                    <input type="text" class="form-control form-control-user" id="inputmin"
+                                        placeholder="Min" name="inputmin" value="">
+                                </div>
+
+                                <!--radiobutton-->
+                                <fieldset >
+                                    <p style="float:left; margin-right:15px;">HPA 기준 : </p>
+                                    <div class="dropdown mb-4" style="float:left; margin-right:15px;">
+                                        <button class="btn btn-primary dropdown-toggle" type="button"
+                                            id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false" style="background-color:lightslategray; border-color:lightslategray; width:150px;">
+                                            HPA standards
+                                        </button>
+                                        <div class="dropdown-menu animated--fade-in"
+                                            aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="#" id='cpu' onclick='changeBtncpu()'>CPU</a>
+                                            <a class="dropdown-item" href="#" id='ram' onclick='changeBtnram()'>RAM</a>
+                                            <a class="dropdown-item" href="#" id='promql' onclick='changeBtnpromql()'>PromQL</a>
+                                        </div>
+                                    </div>
+
+                                    
+                                    {% comment %} 
+                                    <div class="custom-control custom-checkbox small">
+                                        <input type="radio" class="custom-control-input" id="cpuradio" name="hparadio" value="cpu" checked="checked"/>
+                                        <label class="custom-control-label" for="cpuradio">CPU</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox small">
+                                        <input type="radio" class="custom-control-input" id="ramradio" name="hparadio" value="ram"/>
+                                        <label class="custom-control-label" for="ramradio">RAM</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox small" style="margin-left:82px;">
+                                        <input type="radio" class="custom-control-input" id="promqlradio" name="hparadio" value="promQL"/>
+                                        <label class="custom-control-label" for="promqlradio">PromQL</label>
+                                    </div>
+                                    {% endcomment %}   
+
+                                </fieldset>
+                            
+                                
+                            </form>
+
+
+
+
+                        
+                            
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>OJeomMwo</span>                    
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="{% url 'user_login' %}">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

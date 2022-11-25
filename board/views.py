@@ -15,10 +15,10 @@ def popup(request):
 
 @login_required(login_url='/user/login')
 def delete(request, bid):
-    post = Post.objects.get(id=bid)
-    if request.user != post.writer:
-        return redirect('/board/read/'+str(bid))
-    post.delete()
+    hpadata = Hpadata.objects.get(id=bid)
+    #if request.user != post.writer:
+    #    return redirect('/board/read/'+str(bid))
+    hpadata.delete()
     return redirect('/board/list')
 
 

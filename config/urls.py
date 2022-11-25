@@ -23,7 +23,10 @@ urlpatterns = [
     path('', user.views.login),
     
     path('board/list', board.views.list, name='board_list'),
+    path('board/list/<int:bid>', board.views.list, name='board_list'),
     path('board/popup', board.views.popup, name='board_popup'),
+    path('board/delete/<int:bid>', board.views.delete, name='board_delete'),
+    #path('board/read/<int:bid>', board.views.read),
     
     path('user/signup', user.views.signup),
     path('user/login', user.views.login, name='user_login'),
@@ -31,6 +34,6 @@ urlpatterns = [
     path('user/changepw', user.views.changepw, name='user_changepw'),
 ]
 """     path('board/create', board.views.create),
-    path('board/read/<int:bid>', board.views.read),
-    path('board/delete/<int:bid>', board.views.delete),
+    
+    
     path('board/update/<int:bid>', board.views.update), """

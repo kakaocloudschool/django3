@@ -13,19 +13,23 @@ def popup(request):
     print("hello")
     return render(request, 'addschedule.html')
 
-@login_required(login_url='/user/login')
+#@login_required(login_url='/user/login')
 def delete(request, bid):
     hpadata = Hpadata.objects.get(id=bid)
+    hpadata.delete() # +
+    return redirect('/board/list') # +
+    
+    # user 추가 시 응용
     #if request.user != post.writer:
     #    return redirect('/board/read/'+str(bid))
-    hpadata.delete()
-    return redirect('/board/list')
+    #hpadata.delete()
+    #return redirect('/board/list')
 
 
 """ def read(request, bid):
-    post = Post.objects.get(id=bid)
-    context = {'post': post}
-    return render(request, 'board/read.html', context) """
+    hpadata = Hpadata.objects.get(id=bid)
+    context = {'hpadata': hpadata}
+    return render(request, 'index.html', context) """
 
 """ @login_required(login_url='/user/login')
 def create(request):

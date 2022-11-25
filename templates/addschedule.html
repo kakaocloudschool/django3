@@ -34,7 +34,7 @@
                         </div>
                         <div class="card-body">
 
-                            <form   >
+                            <form >
 
                                 <!--LIST-->
                                 <p style="float:left; margin-right:10px;">NS : </p>
@@ -46,9 +46,13 @@
                                     </button>
                                     <div class="dropdown-menu animated--fade-in"
                                         aria-labelledby="btn1">
-                                        {% for hpadata in hpadatas %}
-                                            <a class="dropdown-item" href="#" onclick='changeBtnName1()'>{{ hpadata.namespace }}</a>
+
+                                        <a class="dropdown-item" href="#" id="apins" data-value="nginx" onclick='changeBtnName1()'>nginx</a>
+{% comment %} 
+                                        {% for apidata in apidatas %}
+                                            <a class="dropdown-item" href="#" onclick='changeBtnName1()'>{{ apidata.namespace }}</a>
                                         {% endfor %}
+{% endcomment %}
                                     </div>
                                 </div>
 
@@ -62,9 +66,13 @@
                                     
                                     <div class="dropdown-menu animated--fade-in"
                                         aria-labelledby="btn2">
-                                        {% for hpadata in hpadatas %}
-                                            <a class="dropdown-item" href="#" onclick='changeBtnName2()'>{{ hpadata.container }}</a>
+
+                                        <a class="dropdown-item" href="#" id="apictn" data-value="nginx" onclick='changeBtnName2()'>nginx</a>
+{% comment %} 
+                                        {% for apidata in apidatas %}
+                                            <a class="dropdown-item" href="#" onclick='changeBtnName2()'>{{ apidata.container }}</a>
                                         {% endfor %}
+{% endcomment %}
                                     </div>
                                 </div>
 
@@ -72,36 +80,43 @@
                                 <p style="float:left;">MAX : </p>
                                 <div class="col-sm-1 mb-3 mb-sm-10" style="float:left;">
                                     
-                                    <input type="text" class="form-control form-control-user" id="inputmax"
+                                    <input type="text" class="form-control form-control-user" style="width:85px;" id="inputmax"
                                         placeholder="Max" name="inputmax" value="">
                                 </div>
 
                                 <p style="float:left;">MIN : </p>
                                 <div class="col-sm-1 mb-3 mb-sm-10" style="float:left;">
                                     
-                                    <input type="text" class="form-control form-control-user" id="inputmin"
+                                    <input type="text" class="form-control form-control-user" style="width:85px;" id="inputmin"
                                         placeholder="Min" name="inputmin" value="">
                                 </div>
 
-                                <!--radiobutton-->
-                                <fieldset >
-                                    <p style="float:left; margin-right:15px;">HPA 기준 : </p>
-                                    <div class="dropdown mb-4" style="float:left; margin-right:15px;">
-                                        <button class="btn btn-primary dropdown-toggle" type="button"
-                                            id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                                            aria-expanded="false" style="background-color:lightslategray; border-color:lightslategray; width:150px;">
-                                            HPA standards
-                                        </button>
-                                        <div class="dropdown-menu animated--fade-in"
-                                            aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" href="#" id='cpu' onclick='changeBtncpu()'>CPU</a>
-                                            <a class="dropdown-item" href="#" id='ram' onclick='changeBtnram()'>RAM</a>
-                                            <a class="dropdown-item" href="#" id='promql' onclick='changeBtnpromql()'>PromQL</a>
-                                        </div>
+                                <!--hpastandard-->
+                                <p style="float:left; margin-right:15px;">HPA 기준 : </p>
+                                <div class="dropdown mb-4" style="float:left; margin-right:15px;">
+                                    <button class="btn btn-primary dropdown-toggle" type="button"
+                                        id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false" style="background-color:lightslategray; border-color:lightslategray; width:150px;">
+                                        HPA standards
+                                    </button>
+                                    <div class="dropdown-menu animated--fade-in"
+                                        aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="#" id='cpu' data-value="CPU" onclick='changeBtncpu()'>CPU</a>
+                                        <a class="dropdown-item" href="#" id='ram' data-value="RAM" onclick='changeBtnram()'>RAM</a>
+                                        <a class="dropdown-item" href="#" id='promql' data-value="PromQL" onclick='changeBtnpromql()'>PromQL</a>
                                     </div>
+                                </div>
 
-                                    
-                                    {% comment %} 
+                                <a href="#" class="btn btn-primary" style="float:right; margin-right:15px;" type="reset">
+                                    <span class="icon text-white-50">
+                                    </span>
+                                    <span class="text">추가</span>
+                                </a>
+
+                                <!--radiobutton-->
+
+                                {% comment %} 
+                                <fieldset>
                                     <div class="custom-control custom-checkbox small">
                                         <input type="radio" class="custom-control-input" id="cpuradio" name="hparadio" value="cpu" checked="checked"/>
                                         <label class="custom-control-label" for="cpuradio">CPU</label>
@@ -114,10 +129,10 @@
                                         <input type="radio" class="custom-control-input" id="promqlradio" name="hparadio" value="promQL"/>
                                         <label class="custom-control-label" for="promqlradio">PromQL</label>
                                     </div>
-                                    {% endcomment %}   
+                                    
 
                                 </fieldset>
-                            
+                                {% endcomment %}   
                                 
                             </form>
 
@@ -175,5 +190,36 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function changeBtnName1()  {
+            const btnElement = document.getElementById('btn1');
+            const nsElement = document.getElementById('apins').getAttribute('data-value');
+            btnElement.innerText = nsElement;
+        }
+        function changeBtnName2()  {
+            const btnElement = document.getElementById('btn2');
+            const ctnElement = document.getElementById('apictn').getAttribute('data-value');
+            console.log(ctnElement)
+            btnElement.innerText = ctnElement;
+        }
+        function changeBtncpu()  {
+            const btnElement = document.getElementById('dropdownMenuButton');
+            const hpaElement = document.getElementById('cpu').getAttribute('data-value');
+            btnElement.innerText = hpaElement;
+        }
+        function changeBtnram()  {
+            const btnElement = document.getElementById('dropdownMenuButton');
+            const hpaElement = document.getElementById('ram').getAttribute('data-value');
+            btnElement.innerText = hpaElement;
+        }
+        function changeBtnpromql()  {
+            const btnElement = document.getElementById('dropdownMenuButton');
+            const hpaElement = document.getElementById('promql').getAttribute('data-value');
+            btnElement.innerText = hpaElement;
+        }
+        </script>
+
+
 
 {% endblock %}

@@ -167,7 +167,7 @@
                                             <td onClick="">{{ hpadata.minrep }}</td>
                                             <td onClick="">{{ hpadata.autosche }}</td>
                                             <td>
-                                                <a href="#" class="btn btn-primary" style="float:right; margin-right:15px;">
+                                                <a href="{% url 'board_delete' hpadata.id %}" class="btn btn-primary" style="float:right; margin-right:15px;">
                                                     <span class="icon text-white-50">
                                                     </span>
                                                     <span class="text">삭제</span>
@@ -229,33 +229,20 @@
         </div>
     </div>
 
-    <script>
-    function changeBtnName1()  {
-        const btnElement = document.getElementById('btn2');
-        btnElement.innerText = '새이름!';
-    }
-    function changeBtnName2()  {
-        const btnElement = document.getElementById('btn2');
-        btnElement.innerText = document.getElementById("ram").value;
-    }
-    function changeBtncpu()  {
-        const btnElement = document.getElementById('dropdownMenuButton');
-        btnElement.innerText = 'CPU';
-    }
-    function changeBtnram()  {
-        const btnElement = document.getElementById('dropdownMenuButton');
-        btnElement.innerText = 'RAM';
-    }
-    function changeBtnpromql()  {
-        const btnElement = document.getElementById('dropdownMenuButton');
-        btnElement.innerText = 'PromQL';
-    }
-    </script>
     
     <script>
         function showPopup(){
+            var width = 600;
+            var height = 500;
+            var top = 50;
+            var left = 25;
 
-            window.open("{% url 'board_popup' %}","addschedule","width=600, height=500, top=50, left=25");
+            var left = Math.ceil(( window.screen.width - width )/2);
+            var top = Math.ceil(( window.screen.height - height )/2); 
+
+            left += window.screenLeft;
+            
+            window.open( "{% url 'board_popup' %}","addschedule","width=" + width + ", height=" + height + ", top=" + top + ", left=" + left );
         }
     </script>
 

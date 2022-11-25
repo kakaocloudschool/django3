@@ -83,7 +83,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
     }
 }
  """
-pymysql.install_as_MySQLdb
+pymysql.install_as_MySQLdb()
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',

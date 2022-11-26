@@ -18,9 +18,13 @@ from django.urls import path, include
 import board.views
 import user.views
 
+from django.contrib.auth import views as auth_views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', user.views.login),
+    #path('', user.views.login),
+    path('member/', include('member.urls')),
+    path('', auth_views.LoginView.as_view(template_name='member/login.html'), name='login'),
     
     path('board/list', board.views.list, name='board_list'),
     path('board/list/<int:bid>', board.views.list, name='board_list'),
@@ -28,8 +32,8 @@ urlpatterns = [
     path('board/delete/<int:bid>', board.views.delete, name='board_delete'),
     #path('board/read/<int:bid>', board.views.read),
     
-    path('user/signup', user.views.signup),
-    path('user/login', user.views.login, name='user_login'),
+    # path('user/signup', user.views.signup),
+    # path('user/login', user.views.login, name='user_login'),
     path('user/logout', user.views.logout, name='user_logout'),
     path('user/changepw', user.views.changepw, name='user_changepw'),
 ]

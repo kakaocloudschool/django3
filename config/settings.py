@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'board',
     'user',
+    'member',
 ]
 
 MIDDLEWARE = [
@@ -87,7 +88,7 @@ pymysql.install_as_MySQLdb()
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'scheduler',
+        'NAME': 'argocd',
         'USER': 'root',
         'PASSWORD': 'test123',
         'HOST': '127.0.0.1',
@@ -146,3 +147,5 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+LOGIN_REDIRECT_URL = '/board/list'
+

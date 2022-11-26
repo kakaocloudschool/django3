@@ -146,12 +146,13 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
+                                            <th>Appname</th>
                                             <th>이미지</th>
                                             <th>태그</th>
                                             <th>kube_config</th>
                                             <th>manifest</th>
                                             <th>GIT_URL</th>
-                                            <th>authorization</th>
+                                            <th>최종 배포 시간</th>
                                             <th>배포</th>
                                             <th>history</th>
                                             <th>APP 수정</th>
@@ -160,28 +161,29 @@
                                     <tbody>
                                         {% for appcreate in appcreates %}
                                         <tr>
-                                            <td onClick="">{{ appcreate.cn_img }}</td>
-                                            <td onClick="">{{ appcreate.tag }}</td>
-                                            <td onClick="">{{ appcreate.kube_cfg }}</td>
-                                            <td onClick="">{{ appcreate.kube_mani }}</td>
-                                            <td onClick="">{{ appcreate.repo_url }}</td>
-                                            <td onClick="">{{ appcreate.ins_date }}</td>
+                                            <td >{{ appcreate.appname }}</td>
+                                            <td >{{ appcreate.cn_img }}</td>
+                                            <td >{{ appcreate.tag }}</td>
+                                            <td >{{ appcreate.kube_cfg }}</td>
+                                            <td >{{ appcreate.kube_mani }}</td>
+                                            <td >{{ appcreate.repo_url }}</td>
+                                            <td >{{ appcreate.up_date }}</td>
                                             <td>
-                                                <a href="{% url 'board_delete' appcreate.appname %}" class="btn btn-primary" style="float:right; margin-right:15px;">
+                                                <a href="#" onclick="showPopup2();" class="btn btn-primary" style="float:right; margin-right:15px;">
                                                     <span class="icon text-white-50">
                                                     </span>
                                                     <span class="text">배포</span>
                                                 </a>
                                             </td>
                                             <td>
-                                                <a href="{% url 'board_delete' appcreate.appname %}" class="btn btn-primary" style="float:right; margin-right:15px;">
+                                                <a href="#" onclick="showPopup3();" class="btn btn-primary" style="float:right; margin-right:15px;">
                                                     <span class="icon text-white-50">
                                                     </span>
                                                     <span class="text">배포 이력</span>
                                                 </a>
                                             </td>
                                             <td>
-                                                <a href="{% url 'board_delete' appcreate.appname %}" class="btn btn-primary" style="float:right; margin-right:15px;">
+                                                <a href="#" onclick="showPopup4();" class="btn btn-primary" style="float:right; margin-right:15px;">
                                                     <span class="icon text-white-50">
                                                     </span>
                                                     <span class="text">수정</span>
@@ -256,6 +258,45 @@
             left += window.screenLeft;
             
             window.open( "{% url 'appcreate' %}","appcreate","width=" + width + ", height=" + height + ", top=" + top + ", left=" + left );
+        }
+        function showPopup2(){
+            var width = 600;
+            var height = 500;
+            var top = 50;
+            var left = 25;
+
+            var left = Math.ceil(( window.screen.width - width )/2);
+            var top = Math.ceil(( window.screen.height - height )/2); 
+
+            left += window.screenLeft;
+            
+            window.open( "{% url 'board_distribute' %}","appdistribute","width=" + width + ", height=" + height + ", top=" + top + ", left=" + left );
+        }
+        function showPopup3(){
+            var width = 600;
+            var height = 500;
+            var top = 50;
+            var left = 25;
+
+            var left = Math.ceil(( window.screen.width - width )/2);
+            var top = Math.ceil(( window.screen.height - height )/2); 
+
+            left += window.screenLeft;
+            
+            window.open( "{% url 'board_history' %}","apphistory","width=" + width + ", height=" + height + ", top=" + top + ", left=" + left );
+        }
+        function showPopup4(){
+            var width = 600;
+            var height = 500;
+            var top = 50;
+            var left = 25;
+
+            var left = Math.ceil(( window.screen.width - width )/2);
+            var top = Math.ceil(( window.screen.height - height )/2); 
+
+            left += window.screenLeft;
+            
+            window.open( "{% url 'board_update' %}","appupdate","width=" + width + ", height=" + height + ", top=" + top + ", left=" + left );
         }
     </script>
 

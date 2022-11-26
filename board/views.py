@@ -13,6 +13,18 @@ def appcreate(request):
     print("hello")
     return render(request, 'appcreate.html')
 
+def appdistribute(request):
+    print("hello")
+    return render(request, 'appdistribute.html')
+
+def appupdate(request):
+    print("hello")
+    return render(request, 'appupdate.html')
+
+def apphistory(request):
+    print("hello")
+    return render(request, 'apphistory.html')
+
 #@login_required(login_url='/user/login')
 def delete(request, bid):
     appcreate = Appcreate.objects.get(id=bid)

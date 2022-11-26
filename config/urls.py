@@ -34,7 +34,7 @@ urlpatterns = [
     
     # path('user/signup', user.views.signup),
     # path('user/login', user.views.login, name='user_login'),
-    path('user/logout', user.views.logout, name='user_logout'),
+    path('user/logout', auth_views.LoginView.as_view(template_name='member/login.html'), name='login'),
     path('user/changepw', user.views.changepw, name='user_changepw'),
 ]
 """     path('board/create', board.views.create),

@@ -18,7 +18,7 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'board_list' %}">
 
-                <div class="sidebar-brand-text mx-3">DynamicPodScheduler</div>
+                <div class="sidebar-brand-text mx-3">CD using argo</div>
             </a>
 
             <!-- Divider -->
@@ -26,7 +26,7 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Schedule management
+                CD using argo
             </div>
 
 
@@ -36,13 +36,13 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-wrench"></i>
-                    <span>스케줄 정책 관리</span>
+                    <span>배포 정책 관리</span>
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
 
-                        <a class="collapse-item" href="{% url 'board_list' %}">스케줄링 대상 선택</a>
+                        <a class="collapse-item" href="{% url 'board_list' %}">통합 배포</a>
                     </div>
                 </div>
             </li>
@@ -118,13 +118,13 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Select scheduling target</h1>
+                    <h1 class="h3 mb-2 text-gray-800">argo를 활용한 CD 통합 배포</h1>
                     
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Schedule List</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Create App List</h6>
                         </div>
                         <div class="card-body">
 
@@ -136,7 +136,7 @@
                                 <a href="#" onclick="showPopup();" class="btn btn-primary" style="float:right; margin-right:15px;">
                                     <span class="icon text-white-50">
                                     </span>
-                                    <span class="text">새로운 스케줄러 추가</span>
+                                    <span class="text">새로운 APP 생성</span>
                                 </a>
                             </div>
 
@@ -146,14 +146,14 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Namespace 명</th>
-                                            <th>Container 명</th>
-                                            <th>목표 최대 CPU 점유율</th>
-                                            <th>목표 최대 RAM 점유율</th>
-                                            <th>HPA 사용자 정의 최소 replicaset</th>
-                                            <th>HPA 사용자 정의 최대 replicaset</th>
-                                            <th>AutoScheduling 여부</th>
-                                            <th>삭제</th>
+                                            <th>이미지</th>
+                                            <th>태그</th>
+                                            <th>kube_config</th>
+                                            <th>manifest</th>
+                                            <th>GIT_URL</th>
+                                            <th>authorization</th>
+                                            <th>배포</th>
+                                            <th>history</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -165,12 +165,18 @@
                                             <td onClick="">{{ hpadata.maxram }}</td>
                                             <td onClick="">{{ hpadata.maxrep }}</td>
                                             <td onClick="">{{ hpadata.minrep }}</td>
-                                            <td onClick="">{{ hpadata.autosche }}</td>
                                             <td>
                                                 <a href="{% url 'board_delete' hpadata.id %}" class="btn btn-primary" style="float:right; margin-right:15px;">
                                                     <span class="icon text-white-50">
                                                     </span>
-                                                    <span class="text">삭제</span>
+                                                    <span class="text">배포</span>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a href="{% url 'board_delete' hpadata.id %}" class="btn btn-primary" style="float:right; margin-right:15px;">
+                                                    <span class="icon text-white-50">
+                                                    </span>
+                                                    <span class="text">배포 이력</span>
                                                 </a>
                                             </td>
                                             

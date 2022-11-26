@@ -9,15 +9,15 @@ class Post(models.Model):
     create_date = models.DateTimeField(auto_now_add=True)
     writer = models.ForeignKey(User, on_delete=models.CASCADE) """
     
-# HPA 스케줄러 모델
-class Hpadata(models.Model):
-    id = models.AutoField(primary_key=True)
-    namespace = models.CharField(max_length=100)
-    container = models.CharField(max_length=100)
-    hpa = models.CharField(max_length=20)
-    maxcpu = models.DecimalField(decimal_places=2, max_digits=5)
-    maxram = models.DecimalField(decimal_places=2, max_digits=5)
-    minrep = models.IntegerField()
-    maxrep = models.IntegerField()
-    autosche = models.BooleanField()
-    promql = models.TextField()
+# app 생성
+class Appcreate(models.Model):
+    appname = models.CharField(max_length=100, primary_key=True)
+    cn_img = models.CharField(max_length=100)
+    tag = models.CharField(max_length=20)
+    kube_cfg = models.CharField(max_length=100)
+    kube_mani = models.TextField()
+    repo_url = models.TextField()
+    ins_date = models.DateTimeField(auto_now_add=False)
+    ins_id = models.CharField(max_length=100)
+    up_date = models.DateTimeField(auto_now_add=True)
+    up_id = models.CharField(max_length=100)

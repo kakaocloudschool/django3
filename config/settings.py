@@ -87,7 +87,7 @@ pymysql.install_as_MySQLdb()
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'scheduler',
+        'NAME': 'argocd',
         'USER': 'root',
         'PASSWORD': 'test123',
         'HOST': '127.0.0.1',

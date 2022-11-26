@@ -133,7 +133,7 @@
                             <div class="my-2">
 
                                 <!--추가-->
-                                <a href="#" onclick="showPopup();" class="btn btn-primary" style="float:right; margin-right:15px;">
+                                <a href="#" onclick="showPopup1();" class="btn btn-primary" style="float:right; margin-right:15px;">
                                     <span class="icon text-white-50">
                                     </span>
                                     <span class="text">새로운 APP 생성</span>
@@ -154,32 +154,39 @@
                                             <th>authorization</th>
                                             <th>배포</th>
                                             <th>history</th>
+                                            <th>APP 수정</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {% for hpadata in hpadatas %}
+                                        {% for appcreate in appcreates %}
                                         <tr>
-                                            <td onClick="">{{ hpadata.namespace }}</td>
-                                            <td onClick="">{{ hpadata.container }}</td>
-                                            <td onClick="">{{ hpadata.maxcpu }}</td>
-                                            <td onClick="">{{ hpadata.maxram }}</td>
-                                            <td onClick="">{{ hpadata.maxrep }}</td>
-                                            <td onClick="">{{ hpadata.minrep }}</td>
+                                            <td onClick="">{{ appcreate.cn_img }}</td>
+                                            <td onClick="">{{ appcreate.tag }}</td>
+                                            <td onClick="">{{ appcreate.kube_cfg }}</td>
+                                            <td onClick="">{{ appcreate.kube_mani }}</td>
+                                            <td onClick="">{{ appcreate.repo_url }}</td>
+                                            <td onClick="">{{ appcreate.ins_date }}</td>
                                             <td>
-                                                <a href="{% url 'board_delete' hpadata.id %}" class="btn btn-primary" style="float:right; margin-right:15px;">
+                                                <a href="{% url 'board_delete' appcreate.appname %}" class="btn btn-primary" style="float:right; margin-right:15px;">
                                                     <span class="icon text-white-50">
                                                     </span>
                                                     <span class="text">배포</span>
                                                 </a>
                                             </td>
                                             <td>
-                                                <a href="{% url 'board_delete' hpadata.id %}" class="btn btn-primary" style="float:right; margin-right:15px;">
+                                                <a href="{% url 'board_delete' appcreate.appname %}" class="btn btn-primary" style="float:right; margin-right:15px;">
                                                     <span class="icon text-white-50">
                                                     </span>
                                                     <span class="text">배포 이력</span>
                                                 </a>
                                             </td>
-                                            
+                                            <td>
+                                                <a href="{% url 'board_delete' appcreate.appname %}" class="btn btn-primary" style="float:right; margin-right:15px;">
+                                                    <span class="icon text-white-50">
+                                                    </span>
+                                                    <span class="text">수정</span>
+                                                </a>
+                                            </td>
                                         </tr>
                                         {% endfor %}
                                     </tbody>
@@ -237,7 +244,7 @@
 
     
     <script>
-        function showPopup(){
+        function showPopup1(){
             var width = 600;
             var height = 500;
             var top = 50;
@@ -248,7 +255,7 @@
 
             left += window.screenLeft;
             
-            window.open( "{% url 'board_popup' %}","addschedule","width=" + width + ", height=" + height + ", top=" + top + ", left=" + left );
+            window.open( "{% url 'appcreate' %}","appcreate","width=" + width + ", height=" + height + ", top=" + top + ", left=" + left );
         }
     </script>
 

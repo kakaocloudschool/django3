@@ -1,22 +1,22 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
-from board.models import Hpadata
+from board.models import Appcreate
 
 # 로그인 시 처음 보이는 페이지
 def list(request):
-    hpadata = Hpadata.objects.all()
-    context = {'hpadatas': hpadata}
+    appcreate = Appcreate.objects.all()
+    context = {'appcreates': appcreate}
     return render(request, 'index.html', context)
 
-def popup(request):
+def appcreate(request):
     print("hello")
-    return render(request, 'addschedule.html')
+    return render(request, 'appcreate.html')
 
 #@login_required(login_url='/user/login')
 def delete(request, bid):
-    hpadata = Hpadata.objects.get(id=bid)
-    hpadata.delete() # +
+    appcreate = Appcreate.objects.get(id=bid)
+    appcreate.delete() # +
     return redirect('/board/list') # +
     
     # user 추가 시 응용

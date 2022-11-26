@@ -24,7 +24,7 @@ urlpatterns = [
     
     path('board/list', board.views.list, name='board_list'),
     path('board/list/<int:bid>', board.views.list, name='board_list'),
-    path('board/popup', board.views.popup, name='board_popup'),
+    path('board/appcreate', board.views.appcreate, name='appcreate'),
     path('board/delete/<int:bid>', board.views.delete, name='board_delete'),
     #path('board/read/<int:bid>', board.views.read),
     

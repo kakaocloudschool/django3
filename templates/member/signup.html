@@ -1,30 +1,72 @@
-{% extends "base.html" %}
+
+{% extends 'base.html' %}
 {% block content %}
-<div class="container my-3">
-    <form method="post" action="{% url 'member:signup' %}">
-        {% csrf_token %}
-        {% include "form_errors.html" %}
-        <div class="mb-3">
-            <label for="username">사용자 이름</label>
-            <input type="text" class="form-control" name="username" id="username"
-                   value="{{ form.username.value|default_if_none:'' }}">
+
+    <title>SB Admin 2 - Register</title>
+
+
+</head>
+
+<body class="bg-gradient-primary">
+
+    <div class="container">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                    <div class="col-lg-7">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">회원가입!</h1>
+                            </div>
+                            <form method="post" action="{% url 'member:signup' %}">
+                                {% csrf_token %}
+                                {% include "form_errors.html" %}
+                                <div class="form-group row">
+                                    <p class="h4 text-gray-900 mb-4" style="margin-left:120px;">ID : </p>
+                                    <div class="col-sm-8  mb-3 mb-sm-0">
+                                        <input type="text" class="form-control form-control-user" id="username" name="username"
+                                            placeholder="First Name" value="{{ form.username.value|default_if_none:'' }}">
+                                    </div>
+
+                                    
+                                </div>
+                                <div class="form-group row">
+                                    <p class="h4 text-gray-900 mb-4" style="margin-left:85px;">Email : </p>
+                                    <div class="col-sm-8 mb-3 mb-sm-0" >
+                                    <input type="email" class="form-control form-control-user" id="email" name="email"
+                                        placeholder="Email Address" value="{{ form.email.value|default_if_none:'' }}">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <p class="h4 text-gray-900 mb-4" style="margin-left:40px;">Password : </p>
+                                    <div class="col-sm-8 mb-3 mb-sm-0">
+                                        <input type="password" class="form-control form-control-user" id="password1" name="password1"
+                                            placeholder="Password" value="{{ form.password1.value|default_if_none:'' }}">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label>Check </label> <p class="h4 text-gray-900 mb-4"> Password : </p>
+                                    <div class="col-sm-8">
+                                        <input type="password" class="form-control form-control-user" id="password2" name="password2"
+                                            placeholder="Repeat Password" value="{{ form.password2.value|default_if_none:'' }}">
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary" href="{% url 'member:login' %}" style="float:right; " >회원가입</button>
+                            </form>
+                                <br/><br/>
+                                <hr>
+                            <div class="text-center">
+                                <a class="small" href="{% url 'member:login' %}">이미 계정이 있나요? 로그인 하세요!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="mb-3">
-            <label for="password1">비밀번호</label>
-            <input type="password" class="form-control" name="password1" id="password1"
-                   value="{{ form.password1.value|default_if_none:'' }}">
-        </div>
-        <div class="mb-3">
-            <label for="password2">비밀번호 확인</label>
-            <input type="password" class="form-control" name="password2" id="password2"
-                   value="{{ form.password2.value|default_if_none:'' }}">
-        </div>
-        <div class="mb-3">
-            <label for="email">이메일</label>
-            <input type="text" class="form-control" name="email" id="email"
-                   value="{{ form.email.value|default_if_none:'' }}">
-        </div>
-        <button type="submit" class="btn btn-primary">생성하기</button>
-    </form>
-</div>
+
+    </div>
+
 {% endblock %}

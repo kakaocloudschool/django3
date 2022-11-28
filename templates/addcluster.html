@@ -37,16 +37,29 @@
                             <form >
 
                                 <div class="mb-4 " >
-                                    <p style="width: 100px; float:left; margin-right: 10px;">Cluster 이름 : </p>
+                                    <p style="width: 110px; float:left; margin-right: 10px;">Cluster 이름 : </p>
                                     <input type="text" class="form-control form-control-user" style="width:140px;" id="inputmax"
                                         placeholder="Cluster Name" name="inputmax" value="">
                                 </div>
                                 
+{% comment %}                                 <div class="mb-4" >
+                                    <p style="width: 110px; float:left; margin-right: 10px;">Cluster_type : </p>
+                                    <input type="text" class="form-control form-control-user" style="width:160px;" id="inputmin"
+                                        placeholder="Cluster Type" name="inputmin" value="">
+                                </div> {% endcomment %}
+
                                 <div class="mb-4" >
-                                    <p style="width: 100px; float:left; margin-right: 10px;">kubeconfig : </p>
+                                    <p style="width: 110px; float:left; margin-right: 10px;">Bearer_token : </p>
+                                    <input type="text" class="form-control form-control-user" style="width:160px;" id="inputmin"
+                                        placeholder="Bearer Token" name="inputmin" value="">
+                                </div>
+
+                                <div class="mb-4" >
+                                    <p style="width: 110px; float:left; margin-right: 10px;">kubeconfig : </p>
                                     <input type="text" class="form-control form-control-user" style="width:160px;" id="inputmin"
                                         placeholder="kubecfg Filename" name="inputmin" value="">
                                 </div>
+
 
                                 </hr>
                                 <a href="#" class="btn btn-primary" style="float:right; margin-right:15px;" type="reset">

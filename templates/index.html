@@ -154,11 +154,10 @@
                                         <tr>
                                             <th>Appname</th>
                                             <th>Cluster명</th>
-                                            <th>이미지</th>
-                                            <th>태그</th>
-                                            <th>kube_config</th>
-                                            <th>Manifest</th>
+                                            <th>Namespace</th>
                                             <th>GIT_URL</th>
+                                            <th>Branch</th>
+                                            <th>Manifest</th>
                                             <th style="width: 130px;">최종 배포 시간</th>
                                             <th>배포</th>
                                             <th>History</th>
@@ -168,14 +167,13 @@
                                     <tbody>
                                         {% for appcreate in appcreates %}
                                         <tr>
-                                            <td >{{ appcreate.appname }}</td>
-                                            <td >{{ appcreate.cluster }}</td>
-                                            <td >{{ appcreate.cn_img }}</td>
-                                            <td >{{ appcreate.tag }}</td>
-                                            <td >{{ appcreate.kube_cfg }}</td>
-                                            <td >{{ appcreate.kube_mani }}</td>
+                                            <td >{{ appcreate.app_name }}</td>
+                                            <td >{{ appcreate.cluster_name }}</td>
+                                            <td >{{ appcreate.namespace }}</td>
                                             <td >{{ appcreate.repo_url }}</td>
-                                            <td >{{ appcreate.up_date }}</td>
+                                            <td >{{ appcreate.target_revision }}</td>
+                                            <td >{{ appcreate.target_path }}</td>
+                                            <td >{{ appcreate.update_dt }}</td>
                                             <td>
                                                 <a href="#" onclick="showPopup2();" class="btn btn-primary" style="float:right; margin-right:15px;">
                                                     <span class="icon text-white-50">

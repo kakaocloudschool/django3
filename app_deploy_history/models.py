@@ -10,3 +10,5 @@ class App_deploy_history(models.Model):
     insert_dt = models.DateTimeField(auto_now_add=False)
     manager_id = models.CharField(max_length=100)
     manager_date = models.DateTimeField(auto_now_add=True)
+    image = models.CharField(max_length=100)
+    tag = models.CharField(max_length=100)

@@ -34,40 +34,56 @@
                         </div>
                         <div class="card-body">
 
-                            <form >
-
+                            <form action="{% url 'addcluster' %}" method="POST" id='form'>
+                                {% csrf_token %}
                                 <div class="mb-4 " >
                                     <p style="width: 110px; float:left; margin-right: 10px;">Cluster 이름 : </p>
-                                    <input type="text" class="form-control form-control-user" style="width:140px;" id="inputmax"
-                                        placeholder="Cluster Name" name="inputmax" value="">
+                                    <input type="text" class="form-control form-control-user" style="width:140px;" id="clustername"
+                                        placeholder="Cluster Name" name="clustername" value="">
                                 </div>
+                                <div class="mb-4" >
                                 
-{% comment %}                                 <div class="mb-4" >
                                     <p style="width: 110px; float:left; margin-right: 10px;">Cluster_type : </p>
-                                    <input type="text" class="form-control form-control-user" style="width:160px;" id="inputmin"
-                                        placeholder="Cluster Type" name="inputmin" value="">
-                                </div> {% endcomment %}
+                                    <fieldset>
+                                        <div class="custom-control custom-checkbox small" style="float:left; margin-right: 10px;">
+                                            <input type="radio" class="custom-control-input" id="aws" name="typeradio" value="aws" checked="checked"/>
+                                            <label class="custom-control-label" for="aws">AWS</label>
+                                        </div>
+                                        <div class="custom-control custom-checkbox small" style="float:left; margin-right: 10px;">
+                                            <input type="radio" class="custom-control-input" id="gcp" name="typeradio" value="gcp" />
+                                            <label class="custom-control-label" for="gcp">GCP</label>
+                                        </div>
+
+                                    
+
+                                    </fieldset>
+
+                                </div>
 
                                 <div class="mb-4" >
                                     <p style="width: 110px; float:left; margin-right: 10px;">Bearer_token : </p>
-                                    <input type="text" class="form-control form-control-user" style="width:160px;" id="inputmin"
-                                        placeholder="Bearer Token" name="inputmin" value="">
+                                    <input type="text" class="form-control form-control-user" style="width:160px;" id="bearertoken"
+                                        placeholder="Bearer Token" name="bearertoken" value="">
                                 </div>
 
                                 <div class="mb-4" >
                                     <p style="width: 110px; float:left; margin-right: 10px;">kubeconfig : </p>
-                                    <input type="text" class="form-control form-control-user" style="width:160px;" id="inputmin"
-                                        placeholder="kubecfg Filename" name="inputmin" value="">
+                                    <input type="file" class="form-control form-control-user" style="width:250px;" id="kubecfg"
+                                        placeholder="kubecfg Filename" name="kubecfg" value="">
                                 </div>
 
 
                                 </hr>
-                                <a href="#" class="btn btn-primary" style="float:right; margin-right:15px;" type="reset">
+                                <a href="#" class="btn btn-primary" style="float:right; margin-right:15px;" type="reset" onclick='window.close();' >
+                                    <span class="icon text-white-50">
+                                    </span>
+                                    <span class="text">닫기</span>
+                                </a>
+                                <a href="#" class="btn btn-primary" style="float:right; margin-right:15px;" type="reset" onclick="return chk_form()">
                                     <span class="icon text-white-50">
                                     </span>
                                     <span class="text">등록</span>
                                 </a>
-                                
                             </form>
 
 
@@ -125,35 +141,26 @@
         </div>
     </div>
 
-    <script>
-        function changeBtnName1()  {
-            const btnElement = document.getElementById('btn1');
-            const nsElement = document.getElementById('apins').getAttribute('data-value');
-            btnElement.innerText = nsElement;
-        }
-        function changeBtnName2()  {
-            const btnElement = document.getElementById('btn2');
-            const ctnElement = document.getElementById('apictn').getAttribute('data-value');
-            console.log(ctnElement)
-            btnElement.innerText = ctnElement;
-        }
-        function changeBtncpu()  {
-            const btnElement = document.getElementById('dropdownMenuButton');
-            const hpaElement = document.getElementById('cpu').getAttribute('data-value');
-            btnElement.innerText = hpaElement;
-        }
-        function changeBtnram()  {
-            const btnElement = document.getElementById('dropdownMenuButton');
-            const hpaElement = document.getElementById('ram').getAttribute('data-value');
-            btnElement.innerText = hpaElement;
-        }
-        function changeBtnpromql()  {
-            const btnElement = document.getElementById('dropdownMenuButton');
-            const hpaElement = document.getElementById('promql').getAttribute('data-value');
-            btnElement.innerText = hpaElement;
-        }
-        </script>
 
+
+    <script>
+        function chk_form() {
+        if(document.getElementById("clustername").value==''){
+            alert("클러스터 명을 입력해주십시오.");
+            return false;
+        }
+
+        if(document.getElementById("bearertoken").value==''){
+            alert("토큰 값을 입력해주십시오.");
+            return false;
+        }
+        if (document.getElementById("kubecfg").value=='') {
+            alert('kubeconfig 파일을 첨부해주십시오.');
+            return false;
+        }
+        document.getElementById('form').submit();
+        }
+    </script>
 
 
 {% endblock %}

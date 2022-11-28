@@ -53,9 +53,8 @@
                                     </button>
                                     <div class="dropdown-menu animated--fade-in"
                                         aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="#" id='cpu' data-value="CPU" onclick='changeBtncpu()'>CPU</a>
-                                        <a class="dropdown-item" href="#" id='ram' data-value="RAM" onclick='changeBtnram()'>RAM</a>
-                                        <a class="dropdown-item" href="#" id='promql' data-value="PromQL" onclick='changeBtnpromql()'>PromQL</a>
+                                        {% comment %} {% for any in anys %} {% endcomment %}
+                                        <a class="dropdown-item" href="#" id='aws' data-value="aws" onclick='changeBtnAWS()'>AWS</a>
                                     </div>
                                 </div>
 
@@ -88,7 +87,7 @@
 
                                
                                 </hr>
-                                <a href="#" class="btn btn-primary" style="float:right; margin-right:15px;" type="reset">
+                                <a href="#" class="btn btn-primary" style="float:right; margin-right:15px;" type="reset" onclick='self.close();'>
                                     <span class="icon text-white-50">
                                     </span>
                                     <span class="text">생성</span> 
@@ -163,19 +162,14 @@
             console.log(ctnElement)
             btnElement.innerText = ctnElement;
         }
-        function changeBtncpu()  {
+        function changeBtnAWS()  {
             const btnElement = document.getElementById('dropdownMenuButton');
-            const hpaElement = document.getElementById('cpu').getAttribute('data-value');
+            const hpaElement = document.getElementById('aws').getAttribute('data-value');
             btnElement.innerText = hpaElement;
         }
-        function changeBtnram()  {
+        function changeBtnGCP()  {
             const btnElement = document.getElementById('dropdownMenuButton');
-            const hpaElement = document.getElementById('ram').getAttribute('data-value');
-            btnElement.innerText = hpaElement;
-        }
-        function changeBtnpromql()  {
-            const btnElement = document.getElementById('dropdownMenuButton');
-            const hpaElement = document.getElementById('promql').getAttribute('data-value');
+            const hpaElement = document.getElementById('gcp').getAttribute('data-value');
             btnElement.innerText = hpaElement;
         }
         </script>

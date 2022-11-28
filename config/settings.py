@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'board',
     'user',
     'member',
+    'app_deploy_history',
+    'cluster'
 ]
 
 MIDDLEWARE = [

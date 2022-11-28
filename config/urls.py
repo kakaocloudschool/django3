@@ -17,6 +17,9 @@ from django.contrib import admin
 from django.urls import path, include
 import board.views
 import user.views
+import app_deploy_history.views
+import cluster.views
+
 
 from django.contrib.auth import views as auth_views
 
@@ -29,11 +32,11 @@ urlpatterns = [
     path('board/list', board.views.list, name='board_list'),
     path('board/list/<int:bid>', board.views.list, name='board_list'),
     path('board/appcreate', board.views.appcreate, name='appcreate'),
-    path('board/addcluster', board.views.addcluster, name='addcluster'),
-    path('board/appdistribute', board.views.appdistribute, name='board_distribute'),
+    path('cluster/addcluster', cluster.views.addcluster, name='addcluster'),
+    path('app_deploy_history/appdistribute', app_deploy_history.views.appdistribute, name='board_distribute'),
     path('board/appupdate', board.views.appupdate, name='board_update'),
-    path('board/apphistory', board.views.apphistory, name='board_history'),
-    path('board/delete/<int:bid>', board.views.delete, name='board_delete'),
+    path('app_deploy_history/apphistory', app_deploy_history.views.apphistory, name='board_history'),
+    path('board/appdelete/<int:bid>', board.views.appdelete, name='board_delete'),
     #path('board/read/<int:bid>', board.views.read),
     
     # path('user/signup', user.views.signup),

@@ -43,11 +43,20 @@
                                     <input type="text" class="form-control form-control-user" style="width:150px;" id=""
                                         placeholder="app_name" name="" value="">
                                 </div>
-                                
-                                <div class="mb-4 " >
+
+                                <div class="dropdown mb-4" >
                                     <p style="width: 120px; float:left; margin-right: 10px;">클러스터 이름 : </p>
-                                    <input type="text" class="form-control form-control-user" style="width:150px;" id=""
-                                        placeholder="cluster_name" name="" value="">
+                                    <button class="btn btn-primary dropdown-toggle" type="button"
+                                        id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false" style="color: lightslategray; background-color:white; border-color:lightgray; width:150px;">
+                                        cluster_name
+                                    </button>
+                                    <div class="dropdown-menu animated--fade-in"
+                                        aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="#" id='cpu' data-value="CPU" onclick='changeBtncpu()'>CPU</a>
+                                        <a class="dropdown-item" href="#" id='ram' data-value="RAM" onclick='changeBtnram()'>RAM</a>
+                                        <a class="dropdown-item" href="#" id='promql' data-value="PromQL" onclick='changeBtnpromql()'>PromQL</a>
+                                    </div>
                                 </div>
 
                                 <div class="mb-4" >
@@ -76,21 +85,8 @@
 
                                 <!--hpastandard-->
                                 
-{% comment %}                                 <div class="dropdown mb-4" >
-                                    <p style="float:left; margin-right:15px;">HPA 기준 : </p>
-                                    <button class="btn btn-primary dropdown-toggle" type="button"
-                                        id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false" style="background-color:lightslategray; border-color:lightslategray; width:150px;">
-                                        HPA standards
-                                    </button>
-                                    <div class="dropdown-menu animated--fade-in"
-                                        aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="#" id='cpu' data-value="CPU" onclick='changeBtncpu()'>CPU</a>
-                                        <a class="dropdown-item" href="#" id='ram' data-value="RAM" onclick='changeBtnram()'>RAM</a>
-                                        <a class="dropdown-item" href="#" id='promql' data-value="PromQL" onclick='changeBtnpromql()'>PromQL</a>
-                                    </div>
-                                </div>
-                                {% endcomment %}
+
+                               
                                 </hr>
                                 <a href="#" class="btn btn-primary" style="float:right; margin-right:15px;" type="reset">
                                     <span class="icon text-white-50">

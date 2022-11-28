@@ -34,7 +34,7 @@
                         </div>
                         <div class="card-body">
 
-                            <form action="{% url 'addcluster' %}" method="POST" id='form'>
+                            <form action="{% url 'addcluster' %}" method="POST" id='form' enctype="multipart/form-data"> 
                                 {% csrf_token %}
                                 <div class="mb-4 " >
                                     <p style="width: 110px; float:left; margin-right: 10px;">Cluster 이름 : </p>
@@ -79,7 +79,7 @@
                                     </span>
                                     <span class="text">닫기</span>
                                 </a>
-                                <a href="#" class="btn btn-primary" style="float:right; margin-right:15px;" type="reset" onclick="return chk_form()">
+                                <a href="#" class="btn btn-primary" style="float:right; margin-right:15px;" type="submit" onclick="return chk_form()">
                                     <span class="icon text-white-50">
                                     </span>
                                     <span class="text">등록</span>

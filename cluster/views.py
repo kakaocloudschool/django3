@@ -10,7 +10,8 @@ def addcluster(request):
         cluster.cluster_name = request.POST['clustername']
         cluster.cluster_type = request.POST['typeradio']
         cluster.bearer_token = request.POST['bearertoken']
-        cluster.kubeconfig = request.POST['kubecfg']
+        cluster.kubeconfig = request.FILES.get('kubecfg')
+
         cluster.save()
     
     return render(request, 'addcluster.html')

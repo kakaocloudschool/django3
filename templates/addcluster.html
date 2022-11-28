@@ -24,76 +24,35 @@
                 <div class="container-fluid"><br/>
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">새로운 APP 생성</h1>
+                    <h1 class="h3 mb-2 text-gray-800">Cluster 등록</h1>
                     
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Create APP</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">ADD Cluster</h6>
                         </div>
                         <div class="card-body">
 
                             <form >
 
- 
-                                
                                 <div class="mb-4 " >
-                                    <p style="width: 120px; float:left; margin-right: 10px;">APP 이름 : </p>
-                                    <input type="text" class="form-control form-control-user" style="width:150px;" id="inputmax"
-                                        placeholder="app_name" name="inputmax" value="">
+                                    <p style="width: 100px; float:left; margin-right: 10px;">Cluster 이름 : </p>
+                                    <input type="text" class="form-control form-control-user" style="width:140px;" id="inputmax"
+                                        placeholder="Cluster Name" name="inputmax" value="">
                                 </div>
                                 
                                 <div class="mb-4" >
-                                    <p style="width: 120px; float:left; margin-right: 10px;">네임스페이스 : </p>
-                                    <input type="text" class="form-control form-control-user" style="width:150px;" id="inputmin"
-                                        placeholder="namespace" name="inputmin" value="">
-                                </div>
-                                <div class="mb-4 " >
-                                    <p style="width: 120px; float:left; margin-right: 10px;">클러스터 이름 : </p>
-                                    <input type="text" class="form-control form-control-user" style="width:150px;" id="inputmax"
-                                        placeholder="cluster_name" name="inputmax" value="">
-                                </div>
-                                
-                                <div class="mb-4" >
-                                    <p style="width: 120px; float:left; margin-right: 10px;">GITHUB 주소 : </p>
-                                    <input type="text" class="form-control form-control-user" style="width:150px;" id="inputmin"
-                                        placeholder="repoURL" name="inputmin" value="">
-                                </div>
-                                <div class="mb-4 " >
-                                    <p style="width: 120px; float:left; margin-right: 10px;">Target Branch : </p>
-                                    <input type="text" class="form-control form-control-user" style="width:150px;" id="inputmax"
-                                        placeholder="targetRevision" name="inputmax" value="">
-                                </div>
-                                
-                                <div class="mb-4" >
-                                    <p style="width: 120px; float:left; margin-right: 10px;">GITHUB Manifest Path : </p>
-                                    <input type="text" class="form-control form-control-user" style="width:150px;" id="inputmin"
-                                        placeholder="path" name="inputmin" value="">
+                                    <p style="width: 100px; float:left; margin-right: 10px;">kubeconfig : </p>
+                                    <input type="text" class="form-control form-control-user" style="width:160px;" id="inputmin"
+                                        placeholder="kubecfg Filename" name="inputmin" value="">
                                 </div>
 
-                                <!--hpastandard-->
-                                
-{% comment %}                                 <div class="dropdown mb-4" >
-                                    <p style="float:left; margin-right:15px;">HPA 기준 : </p>
-                                    <button class="btn btn-primary dropdown-toggle" type="button"
-                                        id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false" style="background-color:lightslategray; border-color:lightslategray; width:150px;">
-                                        HPA standards
-                                    </button>
-                                    <div class="dropdown-menu animated--fade-in"
-                                        aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="#" id='cpu' data-value="CPU" onclick='changeBtncpu()'>CPU</a>
-                                        <a class="dropdown-item" href="#" id='ram' data-value="RAM" onclick='changeBtnram()'>RAM</a>
-                                        <a class="dropdown-item" href="#" id='promql' data-value="PromQL" onclick='changeBtnpromql()'>PromQL</a>
-                                    </div>
-                                </div>
-                                {% endcomment %}
                                 </hr>
                                 <a href="#" class="btn btn-primary" style="float:right; margin-right:15px;" type="reset">
                                     <span class="icon text-white-50">
                                     </span>
-                                    <span class="text">생성</span> 
+                                    <span class="text">등록</span>
                                 </a>
                                 
                             </form>

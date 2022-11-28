@@ -29,6 +29,7 @@ urlpatterns = [
     path('board/list', board.views.list, name='board_list'),
     path('board/list/<int:bid>', board.views.list, name='board_list'),
     path('board/appcreate', board.views.appcreate, name='appcreate'),
+    path('board/addcluster', board.views.addcluster, name='addcluster'),
     path('board/appdistribute', board.views.appdistribute, name='board_distribute'),
     path('board/appupdate', board.views.appupdate, name='board_update'),
     path('board/apphistory', board.views.apphistory, name='board_history'),

@@ -133,10 +133,16 @@
                             <div class="my-2">
 
                                 <!--추가-->
-                                <a href="#" onclick="showPopup1();" class="btn btn-primary" style="float:right; margin-right:15px;">
+                                <a href="#" onclick="showPopup0();" class="btn btn-primary" style="float:right; margin-right:15px;">
                                     <span class="icon text-white-50">
                                     </span>
                                     <span class="text">새로운 APP 생성</span>
+                                </a>
+                                <!--추가-->
+                                <a href="#" onclick="showPopup1();" class="btn btn-primary" style="float:right; margin-right:15px;">
+                                    <span class="icon text-white-50">
+                                    </span>
+                                    <span class="text">클러스터 등록</span>
                                 </a>
                             </div>
 
@@ -147,12 +153,13 @@
                                     <thead>
                                         <tr>
                                             <th>Appname</th>
+                                            <th>cluster명</th>
                                             <th>이미지</th>
                                             <th>태그</th>
                                             <th>kube_config</th>
                                             <th>manifest</th>
                                             <th>GIT_URL</th>
-                                            <th>최종 배포 시간</th>
+                                            <th style="width: 130px;">최종 배포 시간</th>
                                             <th>배포</th>
                                             <th>history</th>
                                             <th>APP 수정</th>
@@ -162,6 +169,7 @@
                                         {% for appcreate in appcreates %}
                                         <tr>
                                             <td >{{ appcreate.appname }}</td>
+                                            <td >{{ appcreate.cluster }}</td>
                                             <td >{{ appcreate.cn_img }}</td>
                                             <td >{{ appcreate.tag }}</td>
                                             <td >{{ appcreate.kube_cfg }}</td>
@@ -246,7 +254,7 @@
 
     
     <script>
-        function showPopup1(){
+        function showPopup0(){
             var width = 600;
             var height = 500;
             var top = 50;
@@ -258,6 +266,19 @@
             left += window.screenLeft;
             
             window.open( "{% url 'appcreate' %}","appcreate","width=" + width + ", height=" + height + ", top=" + top + ", left=" + left );
+        }
+        function showPopup1(){
+            var width = 600;
+            var height = 500;
+            var top = 50;
+            var left = 25;
+
+            var left = Math.ceil(( window.screen.width - width )/2);
+            var top = Math.ceil(( window.screen.height - height )/2); 
+
+            left += window.screenLeft;
+            
+            window.open( "{% url 'addcluster' %}","addcluster","width=" + width + ", height=" + height + ", top=" + top + ", left=" + left );
         }
         function showPopup2(){
             var width = 600;

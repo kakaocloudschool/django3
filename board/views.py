@@ -13,6 +13,10 @@ def appcreate(request):
     print("hello")
     return render(request, 'appcreate.html')
 
+def addcluster(request):
+    print("hello")
+    return render(request, 'addcluster.html')
+
 def appdistribute(request):
     print("hello")
     return render(request, 'appdistribute.html')

@@ -54,13 +54,21 @@
                                         aria-labelledby="dropdownMenuButton">
                                         {% comment %} {% for any in anys %} {% endcomment %}
                                         <a class="dropdown-item" href="#" id='aws' name='aws' data-value="aws" onclick='changeBtnAWS()'>AWS</a>
+                        
                                     </div>
                                 </div>
 
                                 <div class="mb-4" >
-                                    <p style="width: 160px; float:left; margin-right: 10px;">Namespace 생성유무 : </p>
-                                    <input type="text" class="form-control form-control-user" style="width:150px;" id="namespace"
-                                        placeholder="namespace" name="namespace" value="">
+                                
+                                    <p style="width: 160px; float:left; margin-right: 10px;">Namespace 생성유무 </p>
+                                    <fieldset>
+                                        <div class="custom-control custom-checkbox small" style="float:left; margin-right: 10px;">
+                                            <input type="checkbox" class="custom-control-input" id="namespacetrue" name="typecheck" />
+                                            <label class="custom-control-label" for="namespacetrue"></label>
+                                        </div>
+
+                                    </fieldset>
+
                                 </div>
 
                                 <div class="mb-4" >
@@ -184,13 +192,13 @@
 
         function changeBtnAWS()  {
             const btnElement = document.getElementById('dropdownMenuButton');
-            const hpaElement = document.getElementById('aws').getAttribute('data-value');
-            btnElement.innerText = hpaElement;
+            const clustername = document.getElementById('aws').getAttribute('data-value');
+            btnElement.innerText = clustername;
         }
         function changeBtnGCP()  {
             const btnElement = document.getElementById('dropdownMenuButton');
-            const hpaElement = document.getElementById('gcp').getAttribute('data-value');
-            btnElement.innerText = hpaElement;
+            const clustername = document.getElementById('gcp').getAttribute('data-value');
+            btnElement.innerText = clustername;
         }
         </script>
 

@@ -12,6 +12,7 @@ class Post(models.Model):
 # app 생성
 class Appcreate(models.Model):
     app_name = models.CharField(max_length=100, primary_key=True)
+    cluster_type = models.CharField(max_length=20)
     cluster_name = models.CharField(max_length=100)
     namespace = models.CharField(max_length=100)
     repo_url = models.TextField()
@@ -19,5 +20,5 @@ class Appcreate(models.Model):
     target_path = models.TextField()
     insert_dt = models.DateTimeField(auto_now_add=False)
     insert_user = models.CharField(max_length=100)
-    update_dt = models.DateTimeField(auto_now_add=True)
+    update_dt = models.DateTimeField(auto_now=True)
     update_user = models.CharField(max_length=100)

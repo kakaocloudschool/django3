@@ -11,13 +11,15 @@ def list(request):
 
 def appcreate(request):
     if(request.method == "POST"):
+        
         create = Appcreate()
-        create.app_name = request.POST['app_name']
-        create.cluster_name = request.POST['cluster_name']
+        create.app_name = request.POST['appname']
+        # create.cluster_name = request.POST['aws']
+        create.cluster_name = 'aws'
         create.namespace = request.POST['namespace']
-        create.repo_url = request.POST['repo_url']
-        create.target_revision = request.POST['target_revision']
-        create.target_path = request.POST['target_path']
+        create.repo_url = request.POST['repourl']
+        create.target_revision = request.POST['targetrevision']
+        create.target_path = request.POST['targetpath']
 
         create.save()
     return render(request, 'appcreate.html')

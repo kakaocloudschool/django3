@@ -34,18 +34,17 @@
                         </div>
                         <div class="card-body">
 
-                            <form >
-
- 
+                            <form action="{% url 'appcreate' %}" method="POST" id='form'>
+                                {% csrf_token %}
                                 
                                 <div class="mb-4 " >
-                                    <p style="width: 120px; float:left; margin-right: 10px;">APP 이름 : </p>
-                                    <input type="text" class="form-control form-control-user" style="width:150px;" id=""
-                                        placeholder="app_name" name="" value="">
+                                    <p style="width: 160px; float:left; margin-right: 10px;">APP 이름 : </p>
+                                    <input type="text" class="form-control form-control-user" style="width:150px;" id="appname"
+                                        placeholder="app_name" name="appname" value="">
                                 </div>
 
                                 <div class="dropdown mb-4" >
-                                    <p style="width: 120px; float:left; margin-right: 10px;">클러스터 이름 : </p>
+                                    <p style="width: 160px; float:left; margin-right: 10px;">클러스터 이름 : </p>
                                     <button class="btn btn-primary dropdown-toggle" type="button"
                                         id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                                         aria-expanded="false" style="color: lightslategray; background-color:white; border-color:lightgray; width:150px;">
@@ -54,32 +53,38 @@
                                     <div class="dropdown-menu animated--fade-in"
                                         aria-labelledby="dropdownMenuButton">
                                         {% comment %} {% for any in anys %} {% endcomment %}
-                                        <a class="dropdown-item" href="#" id='aws' data-value="aws" onclick='changeBtnAWS()'>AWS</a>
+                                        <a class="dropdown-item" href="#" id='aws' name='aws' data-value="aws" onclick='changeBtnAWS()'>AWS</a>
                                     </div>
                                 </div>
 
                                 <div class="mb-4" >
-                                    <p style="width: 120px; float:left; margin-right: 10px;">네임스페이스 : </p>
-                                    <input type="text" class="form-control form-control-user" style="width:150px;" id=""
-                                        placeholder="namespace" name="" value="">
+                                    <p style="width: 160px; float:left; margin-right: 10px;">Namespace 생성유무 : </p>
+                                    <input type="text" class="form-control form-control-user" style="width:150px;" id="namespace"
+                                        placeholder="namespace" name="namespace" value="">
+                                </div>
+
+                                <div class="mb-4" >
+                                    <p style="width: 160px; float:left; margin-right: 10px;">Namespace 명 : </p>
+                                    <input type="text" class="form-control form-control-user" style="width:150px;" id="namespace"
+                                        placeholder="namespace" name="namespace" value="">
                                 </div>
 
                                 
                                 <div class="mb-4" >
-                                    <p style="width: 120px; float:left; margin-right: 10px;">GITHUB 주소 : </p>
-                                    <input type="text" class="form-control form-control-user" style="width:150px;" id=""
-                                        placeholder="repoURL" name="" value="">
+                                    <p style="width: 160px; float:left; margin-right: 10px;">GITHUB 주소 : </p>
+                                    <input type="text" class="form-control form-control-user" style="width:150px;" id="repourl"
+                                        placeholder="repoURL" name="repourl" value="">
                                 </div>
                                 <div class="mb-4 " >
-                                    <p style="width: 120px; float:left; margin-right: 10px;">Target Branch : </p>
-                                    <input type="text" class="form-control form-control-user" style="width:150px;" id=""
-                                        placeholder="targetRevision" name="" value="">
+                                    <p style="width: 160px; float:left; margin-right: 10px;">Target Branch : </p>
+                                    <input type="text" class="form-control form-control-user" style="width:150px;" id="targetrevision"
+                                        placeholder="targetRevision" name="targetrevision" value="">
                                 </div>
                                 
                                 <div class="mb-4" >
-                                    <p style="width: 120px; float:left; margin-right: 10px;">GITHUB Manifest Path : </p>
-                                    <input type="text" class="form-control form-control-user" style="width:150px;" id=""
-                                        placeholder="path" name="" value="">
+                                    <p style="width: 160px; float:left; margin-right: 10px;">GITHUB Manifest Path : </p>
+                                    <input type="text" class="form-control form-control-user" style="width:150px;" id="targetpath"
+                                        placeholder="path" name="targetpath" value="">
                                 </div>
 
                                 <!--hpastandard-->
@@ -87,7 +92,7 @@
 
                                
                                 </hr>
-                                <a href="#" class="btn btn-primary" style="float:right; margin-right:15px;" type="reset" onclick='self.close();'>
+                                <a href="#" class="btn btn-primary" style="float:right; margin-right:15px;" type="reset" onclick='return chk_form(); self.close();'>
                                     <span class="icon text-white-50">
                                     </span>
                                     <span class="text">생성</span> 
@@ -150,18 +155,33 @@
         </div>
     </div>
 
+
     <script>
-        function changeBtnName1()  {
-            const btnElement = document.getElementById('btn1');
-            const nsElement = document.getElementById('apins').getAttribute('data-value');
-            btnElement.innerText = nsElement;
+        function chk_form() {
+        if(document.getElementById("appname").value==''){
+            alert("생성할 APP 이름을 입력해주십시오.");
+            return false;
         }
-        function changeBtnName2()  {
-            const btnElement = document.getElementById('btn2');
-            const ctnElement = document.getElementById('apictn').getAttribute('data-value');
-            console.log(ctnElement)
-            btnElement.innerText = ctnElement;
+
+        if(document.getElementById("namespace").value==''){
+            alert("Namespace를 입력해주십시오.");
+            return false;
         }
+        if (document.getElementById("repourl").value=='') {
+            alert('GitHub Repository를 입력해주십시오.');
+            return false;
+        }
+        if (document.getElementById("targetrevision").value=='') {
+            alert('GitHub Branch를 입력해주십시오.');
+            return false;
+        }
+        if (document.getElementById("targetpath").value=='') {
+            alert('GitHub Manifest를 입력해주십시오.');
+            return false;
+        }
+        document.getElementById('form').submit();
+        }
+
         function changeBtnAWS()  {
             const btnElement = document.getElementById('dropdownMenuButton');
             const hpaElement = document.getElementById('aws').getAttribute('data-value');

@@ -10,11 +10,19 @@ def list(request):
     return render(request, 'index.html', context)
 
 def appcreate(request):
-    print("hello")
+    if(request.method == "POST"):
+        create = Appcreate()
+        create.app_name = request.POST['app_name']
+        create.cluster_name = request.POST['cluster_name']
+        create.namespace = request.POST['namespace']
+        create.repo_url = request.POST['repo_url']
+        create.target_revision = request.POST['target_revision']
+        create.target_path = request.POST['target_path']
+
+        create.save()
     return render(request, 'appcreate.html')
 
 def appupdate(request):
-    print("hello")
     return render(request, 'appupdate.html')
 
 #@login_required(login_url='/user/login')

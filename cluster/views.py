@@ -4,7 +4,6 @@ from django.utils import timezone
 
 # Create your views here.
 def addcluster(request):
-    print("hello")
     if(request.method == "POST"):
         cluster = Cluster()
         cluster.cluster_name = request.POST['clustername']

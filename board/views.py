@@ -15,7 +15,6 @@ def appcreate(request):
         create = Appcreate()
         create.app_name = request.POST['appname']
         # create.cluster_name = request.POST['aws']
-        create.cluster_name = 'aws'
         create.namespace = request.POST['namespace']
         create.repo_url = request.POST['repourl']
         create.target_revision = request.POST['targetrevision']

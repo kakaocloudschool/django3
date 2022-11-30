@@ -32,7 +32,7 @@ urlpatterns = [
     path('', auth_views.LoginView.as_view(template_name='member/login.html'), name='login'),
     
     path('board/list', board.views.list, name='board_list'),
-    path('board/list/<int:bid>', board.views.list, name='board_list'),
+    path('board/list/<int:bid>', board.views.list, name='board_list_id'),
     path('board/appcreate', board.views.appcreate, name='appcreate'),
     path('cluster/addcluster', cluster.views.addcluster, name='addcluster'),
     path('app_deploy_history/appdistribute', app_deploy_history.views.appdistribute, name='board_distribute'),

@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-x9*&&-g*-b@jbt%p(8#pma)rwlz-#gjsu(z44cy%se5zk=g3@w'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['192.168.*.*:80', 'localhost', '127.0.0.1', 'name.duckdns.org']
 
@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'app_deploy_history',
     'cluster',
 ]
+AUTH_USER_MODEL = 'member.CustomUser'
+
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'

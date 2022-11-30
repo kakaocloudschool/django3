@@ -42,11 +42,12 @@ INSTALLED_APPS = [
     'bootstrap4',
     # user app
     'board',
-    'user',
     'member',
     'app_deploy_history',
     'cluster',
 ]
+AUTH_USER_MODEL = 'member.CustomUser'
+
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
@@ -85,27 +86,28 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-""" DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
- """
-pymysql.install_as_MySQLdb()
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'argocd',
-        'USER': 'root',
-        'PASSWORD': 'test123',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
-        'OPTIONS': {
-            'init_command': 'SET sql_mode="STRICT_TRANS_TABLES"'
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
-}
+else:
+    pymysql.install_as_MySQLdb()
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'argocd',
+            'USER': 'root',
+            'PASSWORD': 'test123',
+            'HOST': '127.0.0.1',
+            'PORT': '3306',
+            'OPTIONS': {
+                'init_command': 'SET sql_mode="STRICT_TRANS_TABLES"'
+            }
+        }
+    }
 
 
 
@@ -156,3 +158,7 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = '/board/list'
+
+ARGOCD_URL = "https://192.168.50.104/"
+ARGOCD_USERNAME = "admin"
+ARGO_PASSWORD = "hHGfeDCRrCJ2pXCP"

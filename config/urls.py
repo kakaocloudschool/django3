@@ -18,7 +18,6 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 import board.views
-import user.views
 import app_deploy_history.views
 import cluster.views
 
@@ -43,8 +42,8 @@ urlpatterns = [
     
     # path('user/signup', user.views.signup),
     # path('user/login', user.views.login, name='user_login'),
-    path('user/logout', auth_views.LoginView.as_view(template_name='member/login.html'), name='login'),
-    path('user/changepw', user.views.changepw, name='user_changepw'),
+    # path('user/logout', auth_views.LoginView.as_view(template_name='member/login.html'), name='login'),
+    # path('user/changepw', user.views.changepw, name='user_changepw'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 """     path('board/create', board.views.create),
     

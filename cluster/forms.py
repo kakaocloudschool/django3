@@ -2,6 +2,6 @@ from django import forms
 from .models import Cluster
 
 class ClusterForm(forms.ModelForm):
-		class Meta:
-				model = Cluster
-				fields = '__all__'
+	class Meta:
+		model = Cluster
+		fields = '__all__'

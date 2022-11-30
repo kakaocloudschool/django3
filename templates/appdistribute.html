@@ -120,7 +120,34 @@
         </div>
     </div>
 
-
+    <script>
+        function changeBtnName1()  {
+            const btnElement = document.getElementById('btn1');
+            const nsElement = document.getElementById('apins').getAttribute('data-value');
+            btnElement.innerText = nsElement;
+        }
+        function changeBtnName2()  {
+            const btnElement = document.getElementById('btn2');
+            const ctnElement = document.getElementById('apictn').getAttribute('data-value');
+            console.log(ctnElement)
+            btnElement.innerText = ctnElement;
+        }
+        function changeBtncpu()  {
+            const btnElement = document.getElementById('dropdownMenuButton');
+            const hpaElement = document.getElementById('cpu').getAttribute('data-value');
+            btnElement.innerText = hpaElement;
+        }
+        function changeBtnram()  {
+            const btnElement = document.getElementById('dropdownMenuButton');
+            const hpaElement = document.getElementById('ram').getAttribute('data-value');
+            btnElement.innerText = hpaElement;
+        }
+        function changeBtnpromql()  {
+            const btnElement = document.getElementById('dropdownMenuButton');
+            const hpaElement = document.getElementById('promql').getAttribute('data-value');
+            btnElement.innerText = hpaElement;
+        }
+        </script>
 
 
 
